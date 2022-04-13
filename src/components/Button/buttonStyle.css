@@ -1,0 +1,11 @@
+.button-container {
+  display: block;
+  padding: 10px;
+  border: 1px solid rgb(185, 184, 184);
+  width: 35px;
+  height: 35px;
+  background-color: rgb(242, 242, 242);
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+}

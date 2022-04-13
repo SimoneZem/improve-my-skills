@@ -13,30 +13,47 @@ precedentemente nascosto. Se il contenuto invece è già displayto il testo del 
  e displayarne il valore. */
 
 import { render } from "@testing-library/react";
-import React, { useState } from "react";
-import { MyComp } from "./components/MyComp";
+import { React, useState } from "react";
+import { Button } from "./components/Button";
 import { Display } from "./components/Display";
-
 import "./App.css";
 
-const element = <h1>Hello, World</h1>;
-const dataOra = <h2>It is {new Date().toLocaleTimeString()}.</h2>;
-
-const myComp = "Hello React";
-
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  const increase = () => {
+    setCounter((counter) => counter + 1);
+  };
+
+  const decrease = () => {
+    if (counter > 0) {
+      setCounter((counter) => counter - 1);
+    }
+  };
+
+  const reset = () => {
+    setCounter(0);
+  };
+
   return (
     <div className="App">
-      <p>
-        {element}
-        {dataOra}
-      </p>
-      <p>
-        <MyComp text={myComp} />
-      </p>
-      <p>
-        <Display />
-      </p>
+      <Display myCounter={counter} />
+
+      <Button
+        className="btn-container"
+        btnText={"+"}
+        onClick={() => increase(counter)}
+      />
+      <Button
+        className="btn-container"
+        btnText={"-"}
+        onClick={() => decrease(counter)}
+      />
+      <Button
+        className="reset"
+        btnText={"reset"}
+        onClick={() => reset(counter)}
+      />
     </div>
   );
 }
