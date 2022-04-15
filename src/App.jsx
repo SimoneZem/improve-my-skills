@@ -20,7 +20,7 @@ const Text = () => <div>I will disappear, true Magic</div>;
 
 function App() {
   const [counter, setCounter] = useState(0);
-  const [hideText, setHideText] = useState(true);
+  const [isTextHidden, setTextHidden] = useState(true);
 
   const increase = () => {
     setCounter((counter) => counter + 1);
@@ -36,24 +36,7 @@ function App() {
     setCounter(0);
   };
 
-  //const onClick = () => setHideText(false); ----> corretto per l'hide
-
-  /*const onClick = () => {
-    if ((hideText = true)) {
-      setHideText = true;
-    } else if ((hideText = false)) {
-      setHideText = false;
-    }
-  }; primo tentativo*/
-
-  /*const onClick = () => setHideText(false);
-  const disappearText = () => {
-    if ((setHideText = false)) {
-      onclick = "show me";
-    }
-  }; secondo tentativo */
-
-  const onClick = () => setHideText(false);
+  const onClick = () => setTextHidden(!isTextHidden);
 
   return (
     <div className="App">
@@ -73,10 +56,43 @@ function App() {
         btnText={"reset"}
         onClick={() => reset(counter)}
       />
-      <button onClick={onClick}>Hide Me</button>
-      {hideText ? <Text /> : null}
+      <button onClick={onClick}>{isTextHidden ? "Show" : "Hide"}</button>
+      {!isTextHidden ? <Text /> : null}
     </div>
   );
 }
 
 export default App;
+
+/*import React { useState } from "react";
+
+function App() {
+  const [hideText, setHideText] = useState(false);
+
+  const onClick = () => setHideText(false);
+
+  return (
+    <div>
+      <button onClick={onClick}>Click me</button>
+      {hideText ? <Text /> : null}
+    </div>
+  );
+}
+
+const Text = () => <div>I will disappear, true Magic</div>;
+export default App;*/
+
+/*const onClick = () => {
+    if ((hideText = true)) {
+      setHideText = true;
+    } else if ((hideText = false)) {
+      setHideText = false;
+    }
+  }; primo tentativo*/
+
+/*const onClick = () => setHideText(false);
+  const disappearText = () => {
+    if ((setHideText = false)) {
+      onclick = "show me";
+    }
+  }; secondo tentativo */
